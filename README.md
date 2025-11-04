@@ -1,9 +1,6 @@
 # How Does DPO Reduce Toxicity? A Mechanistic Neuron-Level Analysis
 
-Code for [How Does DPO Reduce Toxicity? A Mechanistic Neuron-Level Analysis](https://aclanthology.org/2025.emnlp-main.1501/), accepted at EMNLP 2025 Main Conference.
-
-## Resources
-
+Code for [How Does DPO Reduce Toxicity? A Mechanistic Neuron-Level Analysis](https://aclanthology.org/2025.emnlp-main.1501/), accepted at EMNLP 2025 Main Conference. 
 [Video](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis) | [Slides](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis) | [Poster](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis)
 
 ![Neuron Groups Visualization](four_neuron_groups.png)
@@ -19,8 +16,6 @@ This codebase provides scripts for: training linear toxicity probes, training DP
 
 ## Installation
 
-Install the required packages with:
-
 ```bash
 pip install -r requirements.txt
 ```
@@ -32,7 +27,7 @@ We used the toxicity dataset in [A Mechanistic Understanding of Alignment Algori
 Save the checkpoints under `./checkpoints` and unzip the data files under `./data`.
 
 
-## Training Linear Toxicity Probes
+## Train Linear Toxicity Probes
 
 To train linear probes for toxicity detection, run:
 
@@ -40,7 +35,7 @@ To train linear probes for toxicity detection, run:
 python ./toxicity/toxic_probe/toxic_probe.py
 ```
 
-## Training DPO Models
+## Train DPO Models
 
 To fine-tune an LLM using DPO, run:
 
@@ -52,7 +47,7 @@ We support training for all huggingface models such as Llama, Gemma, Mistral fam
 Configuration files are located in `./toxicity/train_dpo/config/`. Modify the config files to specify model, training parameters, and hyperparameters. 
 
 
-## Identifying the Four Neuron Groups
+## Identify Four Neuron Groups
 
 To compute neuron projections to the linear probes, run:
 
@@ -67,7 +62,7 @@ To identify and group neurons into the four groups (TP-, TN+, AP+, AN-), see:
 ./toxicity/graphs/group_neurons_llama3.ipynb
 ```
 
-## Applying Activation Patching to Validate the Four Groups
+## Apply Activation Patching to Validate Four Groups
 
 To apply activation patching on the four groups and validate their effects on toxicity, run:
 
@@ -75,7 +70,7 @@ To apply activation patching on the four groups and validate their effects on to
 python ./toxicity/eval_interventions/run_evaluations.py
 ```
 
-## Applying Activation Editing on the Four Groups to Replicate DPO
+## Apply Activation Editing on Four Groups to Replicate DPO
 
 To apply activation editing on the four neuron groups to replicate DPO's effects, use the evaluation scripts with activation editing hooks:
 
