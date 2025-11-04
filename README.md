@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 We used the toxicity dataset in [A Mechanistic Understanding of Alignment Algorithms: A Case Study on DPO and Toxicity](https://arxiv.org/abs/2401.01967) to train linear probes. The datasets are available [here](https://drive.google.com/drive/folders/1baArqcjIc2Q4OllLVUz1hp3p3XxmdteK?usp=drive_link).
 
-Save the checkpoints under `./checkpoints` and unzip the data files under `./data`.
+Unzip the data files under `toxicity_pairwise`.
 
 
 ## Train Linear Toxicity Probes
