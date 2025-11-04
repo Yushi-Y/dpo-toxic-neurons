@@ -70,54 +70,6 @@ def run_f1(
     return np.mean(f1s)
 
 
-# def run_perplexity(
-#     model,
-#     data,
-#     intervene_results,
-#     config,
-# ):
-#     """
-#     Calculate perplexity.
-
-#     :data:
-#     """
-#     encodings = data["prompt_input_ids"]
-
-#     max_length = 1024
-#     stride = max_length
-
-#     ending = encodings.shape[1]
-#     if VERBOSE:
-#         ending = max_length * 4
-
-#     lls = []
-#     for i in tqdm(range(0, ending, stride)):
-#         # iterates through all 287644 tokens in wikitext test in windows of stride (usually max_length)
-#         begin_loc = max(i + stride - max_length, 0)
-#         end_loc = min(i + stride, encodings.shape[1])
-#         trg_len = end_loc - i  # may be different from stride on last loop
-
-#         input_ids = encodings[:, begin_loc:end_loc].to(config["device"])
-
-#         target_ids = input_ids.clone()
-#         target_ids[:, :-trg_len] = -100
-
-#         with torch.no_grad():
-#             outputs = model(input_ids, labels=target_ids)
-
-#             logits = outputs.logits
-#             shift_logits = logits[..., :-1, :].contiguous()
-#             shift_labels = target_ids[..., 1:].contiguous()
-
-#             loss_fn = CrossEntropyLoss()
-#             loss = loss_fn(
-#                 shift_logits.view(-1, shift_logits.shape[-1]),
-#                 shift_labels.view(-1),
-#             )
-#             lls.append(loss * trg_len)
-#         ppl = torch.exp(torch.stack(lls).sum() / end_loc)
-#     return ppl
-
 
 def run_perplexity(
     model,
@@ -203,50 +155,6 @@ def run_n_gram_repetition(model, data, intervene_results, config):
     return np.mean(rates)
 
 
-
-## detox implementation ##
-# def run_perplexity(
-#     model,
-#     data,
-#     intervene_results,
-#     config,
-# ):
-#     """
-#     Calculate perplexity.
-
-#     :param model: Hugging Face model
-#     :param data: Dictionary containing tokenized input prompts under key "prompt_input_ids"
-#     :param intervene_results: Not used (kept for compatibility)
-#     :param config: Dictionary containing device configuration
-#     :return: Perplexity (PPL)
-#     """
-
-#     encodings = data["prompt_input_ids"]
-#     max_length = 1024
-#     stride = 512 
-
-#     seq_len = encodings.shape[1]
-#     nlls = []  # Store negative log-likelihoods
-
-#     for begin_loc in tqdm(range(0, seq_len, stride)):
-#         end_loc = min(begin_loc + max_length, seq_len)
-#         trg_len = end_loc - begin_loc  # Ensure we only consider valid tokens
-
-#         input_ids = encodings[:, begin_loc:end_loc].to(config["device"])
-#         target_ids = input_ids.clone()
-#         target_ids[:, :-trg_len] = -100  # Mask out non-target tokens
-
-#         with torch.no_grad():
-#             outputs = model(input_ids, labels=target_ids)
-#             neg_log_likelihood = outputs.loss  # Use built-in loss function
-
-#         nlls.append(neg_log_likelihood)
-
-#         if end_loc == seq_len:
-#             break  # Stop when we reach the end of the sequence
-
-#     ppl = torch.exp(torch.stack(nlls).mean())  # Compute final perplexity
-#     return ppl.item()
 
 
 def _parse_toxicity_scores(scores, config):

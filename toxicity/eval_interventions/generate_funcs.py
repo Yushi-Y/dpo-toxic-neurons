@@ -37,12 +37,20 @@ def generate_default(model, data, config):
     pad_token_id = model.tokenizer.pad_token_id
     all_output = []
     all_output_text = []
+    # Bad words
+    # bad_words = ["shit", "fuck", "fucked", "fucking", "fucks", "shitty", "crap", "damn", "asshole", 
+                #  "ass", "cunt", "bitch", "dick", "bullshit", "whore", "slut", "hell", "bustard", 
+                #  "cum", "nuts", "sexual", "sex", "porn", "misogyn", "death", "extermination", 
+                #  "corpse", "decap", "offending", "horrible", "junk", "garbage", "trash", "extermination", 
+                #  "decap", "idiot", "stupid", "moron", "ridiculous", "absurd", "ludicrous", "heck"]  
+    # bad_words_ids = model.tokenizer(bad_words, add_special_tokens=False).input_ids
+
 
     for idx in tqdm(range(0, data["prompt_input_ids"].shape[0], batch_size)):
         batch = data["prompt_input_ids"][idx : idx + batch_size]
 
         # Only set attention_mask for models that require it
-        model_name = model.config._name_or_path.lower()  # Get model name
+        model_name = model.config._name_or_path.lower()  
         requires_attention_mask = any(name in model_name for name in ["llama", "mistral", "gpt"])
 
         attention_mask = None
@@ -56,7 +64,8 @@ def generate_default(model, data, config):
                 max_new_tokens=config["max_new_tokens"],
                 do_sample=False,
                 pad_token_id=pad_token_id,
-                attention_mask=attention_mask.to(device) if attention_mask is not None else None,  # Only pass if needed
+                # bad_words_ids=bad_words_ids,
+                attention_mask=attention_mask.to(device) if attention_mask is not None else None, 
             )
 
             if VERBOSE:

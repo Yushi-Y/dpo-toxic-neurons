@@ -12,11 +12,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 
 
 MODEL_NAME = "google/gemma-2-2b" # google/gemma-7b # "google/gemma-2-2b" #"meta-llama/Llama-3.1-8B" # "mistralai/Mistral-7B-v0.1" # "google/gemma-2-2b","gpt2-medium", "meta-llama/Llama-3.1-8B"
-PROBE_NAME = "gemma_2_2b_probe.pt" # "gemma_probe.pt" # "llama3_probe.pt" # "mistral_probe.pt" 
+PROBE_NAME = "gemma_probe.pt" # "gemma_probe.pt" # "llama3_probe.pt" # "mistral_probe.pt" 
 BATCH_SIZE = 128 # Control memory usage
 
 

@@ -159,6 +159,7 @@ def load_data(data_config):
     return [{"prompt": "\n\n".join(data["text"])}]
 
 
+
 def pretty_print_results(results):
     """
     Pretty-print results.
@@ -172,6 +173,7 @@ def pretty_print_results(results):
         reformatted.append([intervene_method] + [_results[k] for k in metrics])
     tabulated = tabulate(reformatted, headers=metrics, tablefmt="orgtbl")
     print(tabulated)
+
 
 
 def get_intervene_name(config):

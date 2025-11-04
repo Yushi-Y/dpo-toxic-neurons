@@ -6,6 +6,7 @@ import torch
 import torch.nn.functional as F
 import pandas as pd
 import ast
+from collections import defaultdict
 
 
 def get_svd_u_vec(model, toxic_vector, topk_sorted_score, U_idx):
@@ -470,13 +471,9 @@ def assign_activations_to_neurons_new(model, config):
 def assign_activations_to_neurons_full(model, config):
     """
     Modify activation coefficients for specific neurons in different layers.
-    Supports both LLaMA-like and GPT2-like architectures.
+    Supports both LLama and GPT2 architectures.
     """
-    import torch
-    import pandas as pd
-    from collections import defaultdict
-
-    config_path = config['neuron_configs_path']  # CSV file path
+    config_path = config['neuron_configs_path']
     hook_timesteps = config["hook_timesteps"]
 
     df_neurons = pd.read_csv(config_path)

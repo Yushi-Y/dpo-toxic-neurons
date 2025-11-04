@@ -51,7 +51,7 @@ python ./toxicity/train_dpo/train.py
 ```
 
 We support training for all huggingface models such as Llama, Gemma, Mistral families.
-Configuration files are located in `./toxicity/train_dpo/config/`. Modify the config files to chan model, training parameters, and hyperparameters. 
+Configuration files are located in `./toxicity/train_dpo/config/`. Modify the config files to specify model, training parameters, and hyperparameters. 
 
 
 ## Identifying the Four Neuron Groups
@@ -126,4 +126,3 @@ If you find our work useful, please cite it as follows:
     pages = "29512--29531",
 }
 ```
-
