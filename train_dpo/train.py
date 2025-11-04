@@ -18,8 +18,8 @@ import wandb
 import sys
 sys.path.append("/data/kebl6672/dpo-toxic-general")
 
-import toxicity.train_dpo.trainers as trainers
-from toxicity.train_dpo.dpo_utils import (
+import train_dpo.trainers as trainers
+from train_dpo.dpo_utils import (
     get_local_dir,
     get_local_run_dir,
     disable_dropout,

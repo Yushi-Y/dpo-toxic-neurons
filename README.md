@@ -32,7 +32,7 @@ Save the checkpoints under `./checkpoints` and unzip the data files under `./dat
 To train linear probes for toxicity detection, run:
 
 ```bash
-python ./toxicity/toxic_probe/toxic_probe.py
+python ./toxic_probe/toxic_probe.py
 ```
 
 ## Train DPO Models
@@ -40,11 +40,11 @@ python ./toxicity/toxic_probe/toxic_probe.py
 To fine-tune an LLM using DPO, run:
 
 ```bash
-python ./toxicity/train_dpo/train.py
+python ./train_dpo/train.py
 ```
 
 We support training for all huggingface models such as Llama, Gemma, Mistral families.
-Configuration files are located in `./toxicity/train_dpo/config/`. Modify the config files to specify model, training parameters, and hyperparameters. 
+Configuration files are located in `./train_dpo/config/`. Modify the config files to specify model, training parameters, and hyperparameters. 
 
 
 ## Identify Four Neuron Groups
@@ -52,14 +52,14 @@ Configuration files are located in `./toxicity/train_dpo/config/`. Modify the co
 To compute neuron projections to the linear probes, run:
 
 ```bash
-python ./toxicity/activation_analysis/activation_projection.py
+python ./activation_analysis/activation_projection.py
 ```
 
 To identify and group neurons into the four groups (TP-, TN+, AP+, AN-), see:
 
 ```bash
-./toxicity/graphs/group_neurons_gpt2.ipynb
-./toxicity/graphs/group_neurons_llama3.ipynb
+./figures/group_neurons_gpt2.ipynb
+./figures/group_neurons_llama3.ipynb
 ```
 
 ## Apply Activation Patching to Validate Four Groups
@@ -67,7 +67,7 @@ To identify and group neurons into the four groups (TP-, TN+, AP+, AN-), see:
 To apply activation patching on the four groups and validate their effects on toxicity, run:
 
 ```bash
-python ./toxicity/eval_interventions/run_evaluations.py
+python ./activation_patching/run_evaluations.py
 ```
 
 ## Apply Activation Editing on Four Groups to Replicate DPO
@@ -75,7 +75,7 @@ python ./toxicity/eval_interventions/run_evaluations.py
 To apply activation editing on the four neuron groups to replicate DPO's effects, use the evaluation scripts with activation editing hooks:
 
 ```bash
-python ./toxicity/eval_interventions/run_evaluations.py
+python ./activation_patching/run_evaluations.py
 ```
 
 ## Citation

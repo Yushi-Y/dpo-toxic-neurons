@@ -14,19 +14,19 @@ import torch
 
 device = "cuda"
 
-from toxicity.eval_interventions.eval_utils import ( 
+from evaluation.eval_utils import ( 
     load_model,
     load_data,
     tokenize,
     get_intervene_name,
     pretty_print_results,
 )
-from toxicity.eval_interventions.generate_funcs import (
+from evaluation.generate_funcs import (
     generate_default,
     get_prompts,
     get_gold,
 )
-from toxicity.eval_interventions.metric_funcs import (
+from evaluation.metric_funcs import (
     run_f1,
     run_perplexity,
     run_perspective_api,
@@ -34,7 +34,7 @@ from toxicity.eval_interventions.metric_funcs import (
     run_dummy,
     run_detoxify_toxicity,
 )
-from toxicity.eval_interventions.hook_utils import (
+from activation_patching.hook_utils import (
     dont_hook,
     hook_subtract,
     scale_top_key_vectors,
@@ -44,7 +44,7 @@ from toxicity.eval_interventions.hook_utils import (
     assign_activations_to_neurons_full,
     assign_activations_to_neurons_new
 )
-from constants import (
+from utils.constants import (
     ROOT_DIR,
     PROFANITY,
     SEXUALLY_EXPLICIT,

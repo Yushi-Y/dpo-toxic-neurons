@@ -8,11 +8,11 @@ import time
 from tqdm import tqdm
 from pathlib import Path
 from googleapiclient import discovery
-from constants import (
+from utils.constants import (
     PERSPECTIVE_API_ATTRIBUTES as ATTRIBUTES,
     PERSPECTIVE_API_KEY,
 )
-from utils import verbose_print
+from utils.general_utils import verbose_print
 
 
 def parse_response_payload(response_obj):

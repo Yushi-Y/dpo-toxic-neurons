@@ -12,11 +12,11 @@ import torch
 from torch.nn import CrossEntropyLoss
 from detoxify import Detoxify
 
-from toxicity.PerspectiveAPI import (
+from utils.PerspectiveAPI import (
     PerspectiveAPI,
     parse_response_payload as parse_toxic_scores,
 )
-from toxicity.eval_interventions.hook_utils import hook_subtract
+from activation_patching.hook_utils import hook_subtract
 from utils import VERBOSE
 
 

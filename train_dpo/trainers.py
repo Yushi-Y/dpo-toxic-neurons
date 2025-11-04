@@ -37,8 +37,8 @@ from torch.distributed.fsdp.wrap import transformer_auto_wrap_policy
 import transformers
 from omegaconf import DictConfig
 
-from toxicity.train_dpo.pplm_dataset import get_pplm_batch_iterator
-from toxicity.train_dpo.dpo_utils import (
+from train_dpo.pplm_dataset import get_pplm_batch_iterator
+from train_dpo.dpo_utils import (
     slice_and_move_batch_for_device,
     formatted_dict,
     all_gather_if_needed,
@@ -47,7 +47,7 @@ from toxicity.train_dpo.dpo_utils import (
     rank0_print,
     get_local_dir,
 )
-from constants import GPT2_PAD_IDX
+from utils.constants import GPT2_PAD_IDX
 
 torch.backends.cuda.matmul.allow_tf32 = True
 

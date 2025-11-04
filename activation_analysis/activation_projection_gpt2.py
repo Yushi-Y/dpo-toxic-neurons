@@ -18,7 +18,7 @@ from collections import defaultdict
 from tqdm import tqdm
 
 import matplotlib.pyplot as plt
-from fig_utils import load_model
+from utils.fig_utils import load_model
 
 device = torch.device("cuda") 
 ROOT_DIR = '/data/kebl6672/dpo-toxic-general/ignore'

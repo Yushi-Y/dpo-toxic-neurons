@@ -13,8 +13,8 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 from torch.nn.utils.rnn import pad_sequence
-from toxicity.train_dpo.dpo_utils import get_local_dir, TemporarilySeededRandom
-from constants import DATA_DIR, GPT2_PAD_IDX
+from train_dpo.dpo_utils import get_local_dir, TemporarilySeededRandom
+from utils.constants import DATA_DIR, GPT2_PAD_IDX
 
 
 def get_pplm_batch_iterator(
