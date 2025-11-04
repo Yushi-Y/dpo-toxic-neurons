@@ -4,9 +4,7 @@ Code for [How Does DPO Reduce Toxicity? A Mechanistic Neuron-Level Analysis](htt
 
 ## Resources
 
-- [Video](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis)
-- [Slides](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis)
-- [Poster](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis)
+[Video](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis) | [Slides](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis) | [Poster](https://underline.io/lecture/131253-how-does-dpo-reduce-toxicityquestion-a-mechanistic-neuron-level-analysis)
 
 ![Neuron Groups Visualization](four_neuron_groups.png)
 
@@ -83,26 +81,6 @@ To apply activation editing on the four neuron groups to replicate DPO's effects
 
 ```bash
 python ./toxicity/eval_interventions/run_evaluations.py
-```
-
-
-## Creating Figures and Visualizations
-
-To re-create figures for toxicity projection, see:
-
-```bash
-./toxicity/activation_analysis/hooked.ipynb
-```
-
-To re-create figures for neuron groups and their contributions, see:
-
-```bash
-./toxicity/graphs/contribution_plot_gpt2.ipynb
-./toxicity/graphs/contribution_plot_llama3.ipynb
-./toxicity/graphs/contribution_plot_gemma2.ipynb
-./toxicity/graphs/contribution_plot_mistral.ipynb
-./toxicity/graphs/group_neurons_gpt2.ipynb
-./toxicity/graphs/group_neurons_llama3.ipynb
 ```
 
 ## Citation
