@@ -22,9 +22,19 @@ pip install -r requirements.txt
 
 ## Models and Data
 
-We used the toxicity dataset in [A Mechanistic Understanding of Alignment Algorithms: A Case Study on DPO and Toxicity](https://arxiv.org/abs/2401.01967) to train linear probes. The datasets are available [here](https://drive.google.com/drive/folders/1baArqcjIc2Q4OllLVUz1hp3p3XxmdteK?usp=drive_link).
+**Datasets and Trained Probes**: Download from [Google Drive](https://drive.google.com/drive/folders/1uxm31rtRlK7NmZT8LDZaUUGoOCV-edWI?usp=sharing]).
 
-Unzip the data files under `toxicity_pairwise`.
+The repository uses three datasets:
+
+1. **Jigsaw Toxic Comment Classification Challenge** (`data/jigsaw-toxic-comment-classification-challenge/`): Used for training linear toxicity probes. Contains ~159K labelled comments for toxicity detection.
+
+2. **Toxicity Pairwise Dataset** (`data/toxicity_pairwise/`): Used for DPO training. Contains preference pairs for training models to prefer non-toxic over toxic responses.
+
+3. **Intervention Data** (`data/intervene_data/`): Used for evaluation and generation metrics:
+   - `challenge_prompts.jsonl` / `challenge_prompts_dev.jsonl`: Challenge prompts for toxicity evaluation. 
+   - `wiki_samples.jsonl` / `wiki_samples_dev.jsonl`: Wiki samples for F1 and n-gram repetition metrics; Perplexity is evaluated on WikiText-2. 
+
+**Trained Probes**: Placed trained probes (`*_probe.pt` and `*_toxic_embed.pt`) in the `toxic_rep/` directory. It includes probes and toxic embeddings for Llama-3, Gemma-2, and Mistral models.
 
 
 ## Train Linear Toxicity Probes
